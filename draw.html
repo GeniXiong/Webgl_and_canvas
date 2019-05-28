@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>WebGL Example File</title>
+
+    <script id="vshader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+    attribute vec4 vColor;
+    varying vec4 fColor;
+
+    void main() {
+        gl_Position = vPosition;	// Point position
+        gl_PointSize = 3.0;		// Point size
+        fColor = vColor;			// Pass point color to fragment shader
+    }
+
+    </script>
+
+    <script id="fshader" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 fColor;
+
+    void main()
+    {
+        gl_FragColor = fColor;	// Point color
+    }
+
+    </script>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/initShaders.js"></script>
+    <script src="lib/MV.js"></script>
+
+    <!--    <script src="hw_1.js"></script>-->
+    <script src="hw_1_draw.js"></script>
+
+</head>
+
+<body onload="main()">
+<div align="center">
+    <h1 id="title">Draw Mode</h1>
+
+    <canvas id="webgl" width="400" height="400" style=" border: 1px solid black";>
+        Please use a browser that supports the "canvas" tag.
+    </canvas>
+</div>
+<div id="demo"></div>
+</body>
+</html>
